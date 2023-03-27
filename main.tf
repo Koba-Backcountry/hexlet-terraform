@@ -58,7 +58,7 @@ resource "digitalocean_droplet" "web1" {
     user = "root"
     type = "ssh"
     private_key = file("~/.ssh/id_rsa")
-    timeout = "3m"
+    timeout = "4m"
   }
   
   provisioner "remote-exec" {
@@ -85,7 +85,7 @@ resource "digitalocean_droplet" "web2" {
     user = "root"
     type = "ssh"
     private_key = file("~/.ssh/id_rsa")
-    timeout = "3m"
+    timeout = "4m"
   }
 
   provisioner "remote-exec" {
@@ -112,7 +112,7 @@ resource "digitalocean_droplet" "web3" {
     user = "root"
     type = "ssh"
     private_key = file("~/.ssh/id_rsa")
-    timeout = "3m"
+    timeout = "4m"
   }
 
   provisioner "remote-exec" {
