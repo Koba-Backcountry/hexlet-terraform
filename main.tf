@@ -47,10 +47,10 @@ resource "digitalocean_ssh_key" "my_ssh_key" {
 }
 
 resource "digitalocean_droplet" "web1" {
-  image      = "ubuntu-18-04-x64"
+  image      = "ubuntu-22-10-x64"
   name       = var.web_srv1
-  region     = "ams3"
-  size       = "s-1vcpu-2gb"
+  region     = "fra1"
+  size       = "s-4vcpu-8gb"
   ssh_keys   = [digitalocean_ssh_key.my_ssh_key.fingerprint]
 
   connection {
@@ -58,7 +58,7 @@ resource "digitalocean_droplet" "web1" {
     user = "root"
     type = "ssh"
     private_key = file("~/.ssh/id_rsa")
-    timeout = "4m"
+    timeout = "2m"
   }
   
   provisioner "remote-exec" {
@@ -74,10 +74,10 @@ resource "digitalocean_droplet" "web1" {
 }
 
 resource "digitalocean_droplet" "web2" {
-  image      = "ubuntu-18-04-x64"
+  image      = "ubuntu-22-10-x64"
   name       = var.web_srv2
-  region     = "ams3"
-  size       = "s-1vcpu-2gb"
+  region     = "fra1"
+  size       = "s-4vcpu-8gb"
   ssh_keys   = [digitalocean_ssh_key.my_ssh_key.fingerprint]
 
   connection {
@@ -85,7 +85,7 @@ resource "digitalocean_droplet" "web2" {
     user = "root"
     type = "ssh"
     private_key = file("~/.ssh/id_rsa")
-    timeout = "4m"
+    timeout = "2m"
   }
 
   provisioner "remote-exec" {
@@ -101,10 +101,10 @@ resource "digitalocean_droplet" "web2" {
 }
 
 resource "digitalocean_droplet" "web3" {
-  image      = "ubuntu-18-04-x64"
+  image      = "ubuntu-22-10-x64"
   name       = var.web_srv3
-  region     = "ams3"
-  size       = "s-1vcpu-2gb"
+  region     = "fra1"
+  size       = "s-4vcpu-8gb"
   ssh_keys   = [digitalocean_ssh_key.my_ssh_key.fingerprint]
 
   connection {
@@ -112,7 +112,7 @@ resource "digitalocean_droplet" "web3" {
     user = "root"
     type = "ssh"
     private_key = file("~/.ssh/id_rsa")
-    timeout = "4m"
+    timeout = "2m"
   }
 
   provisioner "remote-exec" {
@@ -129,7 +129,7 @@ resource "digitalocean_droplet" "web3" {
 
 resource "digitalocean_loadbalancer" "www-lb" {
   name = "www-lb"
-  region = "ams3"
+  region = "fra1"
 
   forwarding_rule {
     entry_port = 80
